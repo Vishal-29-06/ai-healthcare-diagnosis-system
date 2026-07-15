@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MediSense AI — Diagnosis & Hospital Management</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-brand">
+    <span class="pulse-dot"></span> MediSense<span class="accent">AI</span>
+  </div>
+  <div class="nav-links">
+    <a href="/docs">API Docs</a>
+    <a href="#pillars">Platform</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-copy">
+    <p class="eyebrow">Phase 1 — Backend Foundation Live</p>
+    <h1>Care decisions,<br>read like vital signs.</h1>
+    <p class="hero-sub">
+      MediSense AI predicts disease risk from patient data and explains
+      every prediction it makes — while running the appointments,
+      records, and prescriptions of a real hospital behind it.
+    </p>
+    <div class="hero-actions">
+      <a href="/docs" class="btn-primary">View API Docs</a>
+      <a href="/db-check" class="btn-ghost">Check Database</a>
+    </div>
+  </div>
+
+  <div class="hero-pulse" aria-hidden="true">
+    <svg viewBox="0 0 600 200" class="pulse-svg">
+      <polyline class="pulse-line" points="0,100 120,100 150,40 180,160 210,60 240,140 270,100 600,100" />
+    </svg>
+  </div>
+</header>
+
+<section class="pillars" id="pillars">
+  <div class="pillar">
+    <span class="pillar-index">Predict</span>
+    <h3>Disease Risk Scoring</h3>
+    <p>Feature-engineered patient data feeds a trained model that returns a calibrated risk score, not just a label.</p>
+  </div>
+  <div class="pillar">
+    <span class="pillar-index">Explain</span>
+    <h3>Explainable Predictions</h3>
+    <p>Every risk score comes with the factors that drove it — clinicians see the reasoning, not a black box.</p>
+  </div>
+  <div class="pillar">
+    <span class="pillar-index">Manage</span>
+    <h3>Hospital Operations</h3>
+    <p>Appointments, medical records, and prescriptions for patients, doctors, and admins in one system.</p>
+  </div>
+</section>
+
+<footer class="footer">
+  <p>Built with FastAPI + MySQL + scikit-learn — status:
+    <span class="status-live">● running</span>
+  </p>
+</footer>
+
+</body>
+</html>

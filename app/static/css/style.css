@@ -1,0 +1,181 @@
+:root {
+  --ink: #1B2A27;
+  --bg: #FAF8F3;
+  --primary: #123B36;
+  --sage: #6E9B8C;
+  --gold: #C9A15A;
+  --line: rgba(18, 59, 54, 0.12);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- Nav --- */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px 6vw;
+}
+.nav-brand {
+  font-family: 'Fraunces', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.accent { color: var(--gold); }
+.pulse-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  display: inline-block;
+  animation: pulse-dot 1.8s ease-in-out infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.8); }
+}
+.nav-links a {
+  color: var(--ink);
+  text-decoration: none;
+  margin-left: 28px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  opacity: 0.75;
+  transition: opacity 0.2s;
+}
+.nav-links a:hover { opacity: 1; }
+
+/* --- Hero --- */
+.hero {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 40px;
+  padding: 8vh 6vw 10vh;
+  border-bottom: 1px solid var(--line);
+}
+.eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 18px;
+}
+.hero-copy h1 {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: clamp(2.4rem, 4.2vw, 3.6rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  margin-bottom: 22px;
+}
+.hero-sub {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: rgba(27, 42, 39, 0.75);
+  max-width: 480px;
+  margin-bottom: 34px;
+}
+.hero-actions { display: flex; gap: 14px; }
+.btn-primary, .btn-ghost {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.92rem;
+  padding: 13px 24px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+.btn-primary {
+  background: var(--primary);
+  color: var(--bg);
+}
+.btn-ghost {
+  color: var(--primary);
+  border: 1px solid var(--line);
+}
+.btn-primary:hover, .btn-ghost:hover { transform: translateY(-1px); opacity: 0.9; }
+
+/* --- Pulse animation --- */
+.hero-pulse { width: 100%; }
+.pulse-svg { width: 100%; height: auto; }
+.pulse-line {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: draw-pulse 2.8s ease-out forwards, glow-pulse 3s ease-in-out 2.8s infinite;
+}
+@keyframes draw-pulse {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes glow-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}
+
+/* --- Pillars --- */
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.pillar {
+  background: var(--bg);
+  padding: 6vh 3vw;
+}
+.pillar-index {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+}
+.pillar h3 {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 1.35rem;
+  margin: 14px 0 12px;
+}
+.pillar p {
+  font-size: 0.94rem;
+  line-height: 1.55;
+  color: rgba(27, 42, 39, 0.72);
+}
+
+/* --- Footer --- */
+.footer {
+  text-align: center;
+  padding: 30px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.8rem;
+  color: rgba(27, 42, 39, 0.6);
+}
+.status-live { color: var(--sage); font-weight: 500; }
+
+/* --- Responsive --- */
+@media (max-width: 820px) {
+  .hero { grid-template-columns: 1fr; padding: 6vh 6vw; }
+  .pillars { grid-template-columns: 1fr; }
+  .nav-links a:first-child { margin-left: 0; }
+}
+
+/* --- Reduced motion --- */
+@media (prefers-reduced-motion: reduce) {
+  .pulse-line, .pulse-dot { animation: none; stroke-dashoffset: 0; opacity: 1; }
+}
