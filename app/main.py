@@ -5,6 +5,7 @@ from sqlalchemy import text
 from sqlalchemy.orm import Session
 
 from app.database import get_db
+from app.routers import auth
 
 # This creates the actual FastAPI application object.
 # The title/description/version show up automatically in the
@@ -21,6 +22,11 @@ app.mount("/static", StaticFiles(directory="app/static"), name="static")
 
 # Tells FastAPI where to find our HTML template files
 templates = Jinja2Templates(directory="app/templates")
+
+# Registers every route defined in app/routers/auth.py onto our app.
+# Because that router had prefix="/auth", these become:
+# POST /auth/signup, POST /auth/login, GET /auth/me
+app.include_router(auth.router)
 
 
 @app.get("/")
