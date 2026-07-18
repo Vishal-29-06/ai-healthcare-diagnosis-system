@@ -5,7 +5,7 @@ from sqlalchemy import text
 from sqlalchemy.orm import Session
 
 from app.database import get_db
-from app.routers import auth, doctors, appointments
+from app.routers import auth, doctors, appointments, records
 
 # This creates the actual FastAPI application object.
 # The title/description/version show up automatically in the
@@ -29,6 +29,7 @@ templates = Jinja2Templates(directory="app/templates")
 app.include_router(auth.router)
 app.include_router(doctors.router)
 app.include_router(appointments.router)
+app.include_router(records.router)
 
 
 @app.get("/")
