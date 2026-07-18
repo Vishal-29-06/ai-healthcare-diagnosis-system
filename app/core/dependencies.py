@@ -3,7 +3,7 @@ from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.orm import Session
 
 from app.database import get_db
-from app.models.user import User
+from app.models.user import User, UserRole
 from app.core.security import decode_access_token
 
 # This tells FastAPI: "expect a token in the Authorization header,
@@ -42,3 +42,23 @@ def get_current_user(
         raise credentials_error
 
     return user
+
+
+def require_role(*allowed_roles: UserRole):
+    """
+    A 'dependency factory' — a function that RETURNS a dependency,
+    customized by argument. This lets us write:
+        Depends(require_role(UserRole.DOCTOR))
+    instead of writing a separate near-identical function for every
+    role combination we need to guard.
+    """
+    def role_checker(current_user: User = Depends(get_current_user)) -> User:
+        if current_user.role not in allowed_roles:
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail=f"This action requires one of these roles: "
+                       f"{[r.value for r in allowed_roles]}",
+            )
+        return current_user
+
+    return role_checker

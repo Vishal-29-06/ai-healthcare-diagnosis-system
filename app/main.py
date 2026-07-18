@@ -5,7 +5,7 @@ from sqlalchemy import text
 from sqlalchemy.orm import Session
 
 from app.database import get_db
-from app.routers import auth
+from app.routers import auth, doctors, appointments
 
 # This creates the actual FastAPI application object.
 # The title/description/version show up automatically in the
@@ -27,6 +27,8 @@ templates = Jinja2Templates(directory="app/templates")
 # Because that router had prefix="/auth", these become:
 # POST /auth/signup, POST /auth/login, GET /auth/me
 app.include_router(auth.router)
+app.include_router(doctors.router)
+app.include_router(appointments.router)
 
 
 @app.get("/")
