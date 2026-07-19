@@ -5,7 +5,7 @@ from sqlalchemy import text
 from sqlalchemy.orm import Session
 
 from app.database import get_db
-from app.routers import auth, doctors, appointments, records
+from app.routers import auth, doctors, appointments, records, predictions, chatbot
 
 # This creates the actual FastAPI application object.
 # The title/description/version show up automatically in the
@@ -30,6 +30,8 @@ app.include_router(auth.router)
 app.include_router(doctors.router)
 app.include_router(appointments.router)
 app.include_router(records.router)
+app.include_router(predictions.router)
+app.include_router(chatbot.router)
 
 
 @app.get("/")

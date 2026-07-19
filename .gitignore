@@ -8,8 +8,9 @@ __pycache__/
 *.pyo
 .pytest_cache/
 
-# ML models (large binary files — we'll handle these separately later)
-*.pkl
+# ML training artifacts (regenerable via ml/ scripts) — but keep the
+# actual model files the live app depends on
+ml/saved_models/*.pkl
 *.joblib
 
 # IDE
